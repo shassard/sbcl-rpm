@@ -9,7 +9,7 @@
 
 Name: 	 sbcl
 Summary: Steel Bank Common Lisp
-Version: 2.1.9
+Version: 2.1.10
 Release: 1%{?dist}
 
 License: BSD
@@ -270,7 +270,10 @@ fi
 
 
 %changelog
-* Tue Oct 5 2021 Stephen Hassard <stephen@hassard.net> - 2.1.9-1
+* Sun Oct 31 2021 Stephen Hassard <steve@hassard.net> - 2.1.10-1
+- Bump to 2.1.10
+
+* Tue Oct 5 2021 Stephen Hassard <steve@hassard.net> - 2.1.9-1
 - Bump to 2.1.9
 
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.1-5
