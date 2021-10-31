@@ -10,7 +10,7 @@
 Name: 	 sbcl
 Summary: Steel Bank Common Lisp
 Version: 2.1.10
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: BSD
 URL:	 http://sbcl.sourceforge.net/
@@ -111,7 +111,11 @@ Source202: sbcl-install-clc.lisp
 ## upstream patches
 
 BuildRequires: make
+%if 0%{?fedora} >= 35
+BuildRequires: ctags
+%else
 BuildRequires: ctags-etags
+%endif
 BuildRequires: gcc
 BuildRequires: zlib-devel
 # %%check/tests
@@ -270,6 +274,9 @@ fi
 
 
 %changelog
+* Sun Oct 31 2021 Stephen Hassard <steve@hassard.net> - 2.1.10-2
+- Support Fedora 35
+
 * Sun Oct 31 2021 Stephen Hassard <steve@hassard.net> - 2.1.10-1
 - Bump to 2.1.10
 
