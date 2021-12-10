@@ -111,9 +111,10 @@ Source202: sbcl-install-clc.lisp
 ## upstream patches
 
 BuildRequires: make
-%if 0%{?fedora} >= 35 || 0%{?el9}
+%if 0%{?fedora} >= 35
 BuildRequires: ctags
-%else
+%endif
+%if 0%{?el8}
 BuildRequires: ctags-etags
 %endif
 BuildRequires: gcc
