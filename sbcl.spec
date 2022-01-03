@@ -1,5 +1,3 @@
-%define common_lisp_controller 0
-
 # generate/package docs
 %define docs 1
 
@@ -10,7 +8,7 @@
 Name: 	 sbcl
 Summary: Steel Bank Common Lisp
 Version: 2.2.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: BSD
 URL:	 http://sbcl.sourceforge.net/
@@ -89,16 +87,6 @@ BuildRequires: sbcl
 #Source70: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.3.16-arm64-linux-binary.tar.bz2
 #%define sbcl_bootstrap_src -b 70
 #%define sbcl_bootstrap_dir sbcl-1.3.16-arm64-linux
-%endif
-
-%if 0%{?common_lisp_controller}
-BuildRequires: common-lisp-controller
-Requires:      common-lisp-controller
-Requires(post): common-lisp-controller
-Requires(preun): common-lisp-controller
-Source200: sbcl.sh
-Source201: sbcl.rc
-Source202: sbcl-install-clc.lisp
 %endif
 
 #Patch1: sbcl-1.4.14-personality.patch
@@ -196,13 +184,6 @@ unset SBCL_HOME
 export INSTALL_ROOT=%{buildroot}%{_prefix} 
 %{?sbcl_shell} ./install.sh 
 
-%if 0%{?common_lisp_controller}
-install -m744 -p -D %{SOURCE200} %{buildroot}%{_prefix}/lib/common-lisp/bin/sbcl.sh
-install -m644 -p -D %{SOURCE201} %{buildroot}%{_sysconfdir}/sbcl.rc
-install -m644 -p -D %{SOURCE202} %{buildroot}%{_prefix}/lib/sbcl/install-clc.lisp
-# linking ok? -- Rex
-cp -p %{buildroot}%{_prefix}/lib/sbcl/sbcl.core %{buildroot}%{_prefix}/lib/sbcl/sbcl-dist.core
-%endif
 popd
 
 ## Unpackaged files
@@ -237,18 +218,6 @@ popd
 exit $ERROR
 popd
 
-%post
-%if 0%{?common_lisp_controller}
-/usr/sbin/register-common-lisp-implementation sbcl > /dev/null 2>&1 ||:
-%endif
-
-%preun
-if [ $1 -eq 0 ]; then
-%if 0%{?common_lisp_controller}
-/usr/sbin/unregister-common-lisp-implementation sbcl > /dev/null 2>&1 ||:
-%endif
-fi
-
 %files
 %license COPYING
 %doc BUGS CREDITS NEWS PRINCIPLES README TLA TODO
@@ -263,18 +232,12 @@ fi
 %{_infodir}/asdf.info*
 %{_infodir}/sbcl.info*
 %endif
-%if 0%{?common_lisp_controller}
-%{_prefix}/lib/common-lisp/bin/*
-%{_prefix}/lib/sbcl/install-clc.lisp
-%{_prefix}/lib/sbcl/sbcl-dist.core
-%verify(not md5 size) %{_prefix}/lib/sbcl/sbcl.core
-%config(noreplace) %{_sysconfdir}/sbcl.rc
-%else
 %{_prefix}/lib/sbcl/sbcl.core
-%endif
-
 
 %changelog
+* Mon Jan 3 2022 Stephen Hassard <steve@hassard.net> - 2.2.0-2
+- Remove common_lisp_controller as it's breaking %preun
+
 * Mon Jan 3 2022 Stephen Hassard <steve@hassard.net> - 2.2.0-1
 - Bump to 2.2.0
 
