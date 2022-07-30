@@ -7,8 +7,8 @@
 
 Name: 	 sbcl
 Summary: Steel Bank Common Lisp
-Version: 2.2.6
-Release: 2%{?dist}
+Version: 2.2.7
+Release: 1%{?dist}
 
 License: BSD
 URL:	 http://sbcl.sourceforge.net/
@@ -236,6 +236,9 @@ popd
 %{_prefix}/lib/sbcl/sbcl.core
 
 %changelog
+* Sat Jul 30 2022 Stephen Hassard <steve@hassard.net> - 2.2.7-1
+- Bump to 2.2.7
+
 * Fri Jul 1 2022 Stephen Hassard <steve@hassard.net> - 2.2.6-2
 - Add libzstd dep for new core compression enhancement
 
