@@ -8,7 +8,7 @@
 Name: 	 sbcl
 Summary: Steel Bank Common Lisp
 Version: 2.3.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: BSD
 URL:	 http://sbcl.sourceforge.net/
@@ -29,13 +29,13 @@ BuildRequires: sbcl
 %endif
 
 ## x86_64 section
-Source20: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-2.0.11-x86-64-linux-binary.tar.bz2
+Source20: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-2.3.0-x86-64-linux-binary.tar.bz2
 %ifarch x86_64
 %define sbcl_arch x86-64
 #BuildRequires: sbcl
 # or
 %define sbcl_bootstrap_src -b 20
-%define sbcl_bootstrap_dir sbcl-2.0.11-x86-64-linux
+%define sbcl_bootstrap_dir sbcl-2.3.0-x86-64-linux
 %endif
 
 ## ppc section
@@ -236,6 +236,9 @@ popd
 %{_prefix}/lib/sbcl/sbcl.core
 
 %changelog
+* Sat Jan 7 2023 Stephen Hassard <steve@hassard.net> - 2.3.0-2
+- Update the bootstrap binary to 2.3.0 to see if deadlocks during builds on RHEL can be avoided.
+
 * Fri Jan 6 2023 Stephen Hassard <steve@hassard.net> - 2.3.0-1
 - Bump to 2.3.0
 
