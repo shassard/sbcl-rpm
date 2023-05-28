@@ -11,25 +11,25 @@ Version: 2.3.5
 Release: 1%{?dist}
 
 License: BSD
-URL:	 http://sbcl.sourceforge.net/
-Source0: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-%{version}-source.tar.bz2
+URL:	 https://sbcl.sourceforge.net/
+Source0: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-%{version}-source.tar.bz2
 
 ExclusiveArch: %{arm} %{ix86} x86_64 ppc sparcv9 aarch64
 
 # Pre-generated html docs
-Source1: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-%{version}-documentation-html.tar.bz2
+Source1: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-%{version}-documentation-html.tar.bz2
 
 ## x86 section
 %ifarch %{ix86}
 %define sbcl_arch x86
 BuildRequires: sbcl
 # or
-#Source10: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.0.15-x86-linux-binary.tar.bz2
+#Source10: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.0.15-x86-linux-binary.tar.bz2
 #%define sbcl_bootstrap_src -b 10
 %endif
 
 ## x86_64 section
-Source20: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-2.3.0-x86-64-linux-binary.tar.bz2
+Source20: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-2.3.0-x86-64-linux-binary.tar.bz2
 %ifarch x86_64
 %define sbcl_arch x86-64
 #BuildRequires: sbcl
@@ -54,7 +54,7 @@ BuildRequires: sbcl
 %define sbcl_arch sparc 
 BuildRequires: sbcl
 # or
-#Source40: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-0.9.17-sparc-linux-binary.tar.bz2
+#Source40: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-0.9.17-sparc-linux-binary.tar.bz2
 #%define sbcl_bootstrap_src -b 40
 %endif
 
@@ -63,7 +63,7 @@ BuildRequires: sbcl
 %define sbcl_arch arm
 BuildRequires: sbcl
 # or
-#Source50: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.0-armel-linux-binary.tar.bz2
+#Source50: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.0-armel-linux-binary.tar.bz2
 #%define sbcl_bootstrap_src -b 50
 #%define sbcl_bootstrap_dir sbcl-1.2.0-armel-linux
 %endif
@@ -74,7 +74,7 @@ BuildRequires: sbcl
 BuildRequires: sbcl
 # or
 #Source60: sbcl-1.2.0-armhf-linux-binary-2.tar.bz2
-#Source60: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.0-armhf-linux-binary.tar.bz2
+#Source60: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.0-armhf-linux-binary.tar.bz2
 #%define sbcl_bootstrap_src -b 60
 #%define sbcl_bootstrap_dir sbcl-1.2.0-armhf-vfp
 %endif
@@ -84,7 +84,7 @@ BuildRequires: sbcl
 %define sbcl_arch arm64
 BuildRequires: sbcl
 # or
-#Source70: http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.3.16-arm64-linux-binary.tar.bz2
+#Source70: https://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.3.16-arm64-linux-binary.tar.bz2
 #%define sbcl_bootstrap_src -b 70
 #%define sbcl_bootstrap_dir sbcl-1.3.16-arm64-linux
 %endif
@@ -236,6 +236,10 @@ popd
 %{_prefix}/lib/sbcl/sbcl.core
 
 %changelog
+* Sun May 28 2023 Stephen Hassard <steve@hassard.net> - 2.3.5-1
+- Bump to 2.3.5
+- Use https urls to make copr happy.
+
 * Sun Apr 23 2023 Stephen Hassard <steve@hassard.net> - 2.3.3-1
 - Bump to 2.3.3
 
